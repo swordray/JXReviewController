@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JXReviewController_Example' do
+  pod 'JXReviewController', :path => '../'
+
+  target 'JXReviewController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
