@@ -2,7 +2,7 @@
 
 Request rating by 1-5 stars.
 
-[![CI Status](https://img.shields.io/travis/Jianqiu Xiao/JXReviewController.svg?style=flat)](https://travis-ci.org/Jianqiu Xiao/JXReviewController)
+[![CI Status](https://img.shields.io/travis/swordray/JXReviewController.svg?style=flat)](https://travis-ci.org/swordray/JXReviewController)
 [![Version](https://img.shields.io/cocoapods/v/JXReviewController.svg?style=flat)](https://cocoapods.org/pods/JXReviewController)
 [![License](https://img.shields.io/cocoapods/l/JXReviewController.svg?style=flat)](https://cocoapods.org/pods/JXReviewController)
 [![Platform](https://img.shields.io/cocoapods/p/JXReviewController.svg?style=flat)](https://cocoapods.org/pods/JXReviewController)
