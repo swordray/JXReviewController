@@ -1,5 +1,5 @@
 PODS:
-  - JXReviewController (0.1.0):
+  - JXReviewController (0.1.1):
     - SnapKit
     - UIButtonSetBackgroundColorForState
   - SnapKit (5.0.1)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JXReviewController: 2bbba686caa59aa3ba46728b42bc8d55bffa5aa7
+  JXReviewController: 4a8ad49561fc58a99ddf7cf945ac13d10ad7ee1e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   UIButtonSetBackgroundColorForState: fcc963a30f972e15434bacebefe042033940a438
 
