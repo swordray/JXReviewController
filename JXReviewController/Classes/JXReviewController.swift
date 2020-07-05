@@ -100,7 +100,7 @@ public class JXReviewController: UIViewController {
         collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(JXReviewControllerStarCell.self, forCellWithReuseIdentifier: "JXReviewControllerStarCell")
+        collectionView.register(JXReviewControllerStarCell.self, forCellWithReuseIdentifier: JXReviewControllerStarCell.description())
         collectionView.snp.makeConstraints { $0.height.equalTo(44) }
         contentView.addArrangedSubview(collectionView)
 
@@ -114,21 +114,16 @@ public class JXReviewController: UIViewController {
         actionsView.snp.makeConstraints { $0.height.equalTo(44) }
         contentView.addArrangedSubview(actionsView)
 
-        cancelButton = UIButton()
+        cancelButton = JXReviewControllerButton()
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
-        cancelButton.setBackgroundColor(.systemFill, for: .highlighted)
         cancelButton.setTitle(l("Not Now"), for: .normal)
-        cancelButton.setTitle(l("Cancel"), for: .selected)
-        cancelButton.setTitleColor(view.tintColor, for: .normal)
         cancelButton.titleLabel?.font = .systemFont(ofSize: 17)
         actionsView.addArrangedSubview(cancelButton)
 
-        submitButton = UIButton()
+        submitButton = JXReviewControllerButton()
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
         submitButton.isHidden = true
-        submitButton.setBackgroundColor(.tertiarySystemFill, for: .highlighted)
         submitButton.setTitle(l("Submit"), for: .normal)
-        submitButton.setTitleColor(view.tintColor, for: .normal)
         submitButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         actionsView.addArrangedSubview(submitButton)
 
@@ -169,7 +164,7 @@ extension JXReviewController: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JXReviewControllerStarCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JXReviewControllerStarCell.description(), for: indexPath)
         cell.isSelected = indexPath.item < point
         return cell
     }
@@ -181,7 +176,7 @@ extension JXReviewController: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         point = indexPath.item + 1
         collectionView.reloadData()
-        cancelButton.isSelected = true
+        cancelButton.setTitle(l("Cancel"), for: .normal)
         submitButton.isHidden = false
         delegate?.reviewController(self, didSelectWith: point)
     }
