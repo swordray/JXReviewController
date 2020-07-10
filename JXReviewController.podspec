@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXReviewController'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Request rating by 1-5 stars.'
 
 # This description is used to generate tags and improve search results.
