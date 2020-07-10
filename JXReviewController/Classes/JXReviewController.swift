@@ -7,7 +7,6 @@
 //
 
 import SnapKit
-import UIButtonSetBackgroundColorForState
 import UIKit
 
 @available(iOS 13, *)
@@ -37,8 +36,10 @@ public class JXReviewController: UIViewController {
 
         view.backgroundColor = UIColor { UIColor.black.withAlphaComponent($0.userInterfaceStyle == .dark ? 0.6 : 0.4) }
 
-        let contentView = UIStackView()
-        contentView.axis = .vertical
+        let contentView = UIVisualEffectView()
+        contentView.clipsToBounds = true
+        contentView.effect = UIBlurEffect(style: .systemMaterial)
+        contentView.layer.cornerRadius = 16
         view.addSubview(contentView)
         contentView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -46,12 +47,10 @@ public class JXReviewController: UIViewController {
             $0.width.equalTo(270)
         }
 
-        let backdropView = UIVisualEffectView()
-        backdropView.clipsToBounds = true
-        backdropView.effect = UIBlurEffect(style: .systemMaterial)
-        backdropView.layer.cornerRadius = 16
-        contentView.addSubview(backdropView)
-        backdropView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        contentView.contentView.addSubview(stackView)
+        stackView.snp.makeConstraints { $0.edges.equalToSuperview() }
 
         let headerView = UIStackView()
         headerView.alignment = .center
@@ -59,7 +58,7 @@ public class JXReviewController: UIViewController {
         headerView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
         headerView.isLayoutMarginsRelativeArrangement = true
         headerView.snp.makeConstraints { $0.height.greaterThanOrEqualTo(170) }
-        contentView.addArrangedSubview(headerView)
+        stackView.addArrangedSubview(headerView)
 
         let imageView = UIImageView()
         imageView.image = image
@@ -87,7 +86,7 @@ public class JXReviewController: UIViewController {
         let headerSeparator = UIView()
         headerSeparator.backgroundColor = .separator
         headerSeparator.snp.makeConstraints { $0.height.equalTo(1 / traitCollection.displayScale) }
-        contentView.addArrangedSubview(headerSeparator)
+        stackView.addArrangedSubview(headerSeparator)
 
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 40, height: 44)
@@ -102,17 +101,17 @@ public class JXReviewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(JXReviewControllerStarCell.self, forCellWithReuseIdentifier: JXReviewControllerStarCell.description())
         collectionView.snp.makeConstraints { $0.height.equalTo(44) }
-        contentView.addArrangedSubview(collectionView)
+        stackView.addArrangedSubview(collectionView)
 
         let collectionSeparator = UIView()
         collectionSeparator.backgroundColor = .separator
         collectionSeparator.snp.makeConstraints { $0.height.equalTo(1 / traitCollection.displayScale) }
-        contentView.addArrangedSubview(collectionSeparator)
+        stackView.addArrangedSubview(collectionSeparator)
 
         let actionsView = UIStackView()
         actionsView.distribution = .fillEqually
         actionsView.snp.makeConstraints { $0.height.equalTo(44) }
-        contentView.addArrangedSubview(actionsView)
+        stackView.addArrangedSubview(actionsView)
 
         cancelButton = JXReviewControllerButton()
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
