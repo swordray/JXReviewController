@@ -18,6 +18,9 @@ public class JXReviewController: UIViewController {
     public var message: String?
     private var point = 0
     private var submitButton: UIButton!
+    public var notNowButtonTitle: String?
+    public var submitButtonTitle: String?
+    public var cancelButtonTitle: String?
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -115,14 +118,14 @@ public class JXReviewController: UIViewController {
 
         cancelButton = JXReviewControllerButton()
         cancelButton.addTarget(self, action: #selector(cancel), for: .touchUpInside)
-        cancelButton.setTitle(l("Not Now"), for: .normal)
+        cancelButton.setTitle(getNotNowButtonTitle(), for: .normal)
         cancelButton.titleLabel?.font = .systemFont(ofSize: 17)
         actionsView.addArrangedSubview(cancelButton)
 
         submitButton = JXReviewControllerButton()
         submitButton.addTarget(self, action: #selector(submit), for: .touchUpInside)
         submitButton.isHidden = true
-        submitButton.setTitle(l("Submit"), for: .normal)
+        submitButton.setTitle(getSubmitButtonTitle(), for: .normal)
         submitButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         actionsView.addArrangedSubview(submitButton)
 
@@ -153,6 +156,30 @@ public class JXReviewController: UIViewController {
         let bundle = Bundle(path: Bundle(for: JXReviewController.self).path(forResource: "JXReviewController", ofType: "bundle") ?? "") ?? .main
         return NSLocalizedString(key, bundle: bundle, comment: "")
     }
+    
+    private func getNotNowButtonTitle() -> String {
+        if let title = notNowButtonTitle {
+            return title
+        } else {
+            return l("Not Now")
+        }
+    }
+    
+    private func getSubmitButtonTitle() -> String {
+        if let title = submitButtonTitle {
+            return title
+        } else {
+            return l("Submit")
+        }
+    }
+    
+    private func getCancelButtonTitle() -> String {
+        if let title = cancelButtonTitle {
+            return title
+        } else {
+            return l("Cancel")
+        }
+    }
 }
 
 @available(iOS 13, *)
@@ -175,7 +202,7 @@ extension JXReviewController: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         point = indexPath.item + 1
         collectionView.reloadData()
-        cancelButton.setTitle(l("Cancel"), for: .normal)
+        cancelButton.setTitle(getCancelButtonTitle(), for: .normal)
         submitButton.isHidden = false
         delegate?.reviewController(self, didSelectWith: point)
     }
