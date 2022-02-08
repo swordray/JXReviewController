@@ -62,6 +62,10 @@ pod 'JXReviewController'
 
 Jianqiu Xiao, swordray@gmail.com
 
+## Sponsors
+
+* [BaiLu ShuYuan](https://bailushuyuan.org)
+
 ## License
 
 JXReviewController is available under the MIT license. See the LICENSE file for more info.

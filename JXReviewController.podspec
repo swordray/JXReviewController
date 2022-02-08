@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JXReviewController'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'Request rating by 1-5 stars.'
 
 # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 Request rating by 1-5 stars. iOS 13+ is required.
                        DESC
 
-  s.homepage         = 'https://github.com/swordray/JXReviewController'
+  s.homepage         = 'https://bailushuyuan.org'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Jianqiu Xiao' => 'swordray@gmail.com' }
