@@ -13,7 +13,7 @@ import UIKit
 internal class JXReviewControllerStarCell: UICollectionViewCell {
 
     private var imageView: UIImageView!
-    override var isSelected: Bool { didSet { didSetSelected() } }
+    public var isFilled = false { didSet { didSetFilled() } }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +28,7 @@ internal class JXReviewControllerStarCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func didSetSelected() {
-        imageView.image = UIImage(systemName: isSelected ? "star.fill" : "star")
+    private func didSetFilled() {
+        imageView.image = UIImage(systemName: isFilled ? "star.fill" : "star")
     }
 }

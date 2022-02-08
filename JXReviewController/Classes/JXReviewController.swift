@@ -163,8 +163,8 @@ extension JXReviewController: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JXReviewControllerStarCell.description(), for: indexPath)
-        cell.isSelected = indexPath.item < point
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: JXReviewControllerStarCell.description(), for: indexPath) as? JXReviewControllerStarCell ?? .init()
+        cell.isFilled = indexPath.item < point
         return cell
     }
 }
