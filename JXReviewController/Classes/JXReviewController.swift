@@ -61,7 +61,9 @@ public class JXReviewController: UIViewController {
         stackView.addArrangedSubview(headerView)
 
         let imageView = UIImageView()
+        imageView.clipsToBounds = true
         imageView.image = image
+        imageView.layer.cornerRadius = 60 * 0.223_7
         imageView.snp.makeConstraints { $0.size.equalTo(60) }
         headerView.addArrangedSubview(imageView)
         headerView.setCustomSpacing(15, after: imageView)
